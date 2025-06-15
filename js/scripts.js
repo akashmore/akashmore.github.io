@@ -407,9 +407,9 @@ $(function () {
 	});
 	
 	
-	/*
-		Validate Commect Form
-	*/
+        /*
+                Validate Comment Form
+        */
 	
 	$("#comment_form").validate({
 		rules: {
@@ -435,9 +435,9 @@ $(function () {
 	}
 
 
-	/*
-		Tesimonials Carousel
-	*/
+        /*
+                Testimonials Carousel
+        */
 	var revs_slider = $(".revs-carousel.default-revs .owl-carousel");
 
 	revs_slider.owlCarousel({
