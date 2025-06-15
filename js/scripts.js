@@ -376,15 +376,14 @@ $(function () {
 				required: true,
 				email: true
 			},
-			hiddenRecaptcha: {
-				required: function () {
-					if (grecaptcha.getResponse() == '') {
-						return true;
-					} else {
-						return false;
-					}
-				}
-			}
+                        hiddenRecaptcha: {
+                                required: function () {
+                                        if (typeof grecaptcha !== 'undefined') {
+                                                return grecaptcha.getResponse() == '';
+                                        }
+                                        return false;
+                                }
+                        }
 		},
 		success: "valid",
 		submitHandler: function() {
