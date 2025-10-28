@@ -25,6 +25,89 @@
 	<link rel="stylesheet" href="css/demos/demo-3-colors.css" />
 	<link rel="stylesheet" href="css/new-skin/classic-skin.css" />
 	<!-- <link rel="shortcut icon" href="images/favicons/favicon.ico"> -->
+	<style>
+		/* ===== CONTACT SECTION: clean 2-column layout, no dotted leaders ===== */
+
+		.content.contacts .info-list {
+			padding-top: 0;
+		}
+
+		/* Two equal columns with smaller gap */
+		.content.contacts .info-list ul {
+			margin: 0 !important;
+			grid-template-columns: repeat(2, minmax(320px, 1fr));
+			column-gap: 20px;
+			row-gap: 10px;
+		}
+
+		/* Each row = [LABEL][VALUE] */
+		.content.contacts .info-list ul li {
+			display: grid !important;
+			grid-template-columns: max-content 1fr;
+			align-items: baseline;
+			gap: 12px;
+			width: auto !important;
+			padding: 6px 0 !important;
+			text-align: left !important;
+			border: 0 !important;
+		}
+
+		/* Kill theme’s row divider */
+		.content.contacts .info-list ul li:before {
+			content: none !important;
+			display: none !important;
+		}
+
+		/* Label pill → plain text, NO dots */
+		.content.contacts .info-list ul li strong {
+			float: none !important;
+			background: transparent !important;
+			color: #2f2f2f !important;
+			padding: 0 !important;
+			margin: 0 !important;
+			font-weight: 700;
+			white-space: nowrap;
+		}
+
+		/* Some skins add dot leaders via :after — disable them */
+		.content.contacts .info-list ul li strong:after {
+			content: none !important;
+		}
+
+		/* Values & links (wrap long email safely) */
+		.content.contacts .info-list ul li a,
+		.content.contacts .info-list ul li span {
+			color: #4e9f6b;
+			text-decoration: none;
+			font-weight: 500;
+			overflow-wrap: anywhere;
+			/* allow graceful break in long emails */
+			word-break: normal;
+		}
+
+		.content.contacts .info-list ul li a:hover {
+			text-decoration: underline;
+		}
+
+		/* Stack to one column on tablets/phones */
+		@media (max-width: 1024px) {
+			.content.contacts .info-list ul {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* neutral by default */
+		input,
+		textarea {
+			border-color: #eeeeee !important;
+		}
+
+		/* show red borders ONLY when the form has .show-invalid */
+		#cform.show-invalid input:invalid,
+		#cform.show-invalid textarea:invalid {
+			border-color: #e74c3c !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -139,7 +222,7 @@
 
 					<!-- profile buttons -->
 					<div class="lnks">
-						<a href="./resume/Akash_More_Resume_2025.pdf" class="lnk">
+						<a href="./resume/Akash_More_Resume.pdf" class="lnk">
 							<span class="text">Download CV</span>
 							<span class="ion ion-android-download"></span>
 						</a>
@@ -169,15 +252,18 @@
 								<div class="text-box">
 									<p>
 										<strong>Hey there! I’m Akash More.</strong>
-										A full-stack developer from Pune, India, with experience in both front-end and back-end development. When I’m not coding, you’ll find me traveling, riding my bike, gaming, or capturing moments through photography.
+										A full-stack developer from Pune, India, with experience in both front-end and
+										back-end development and recently exploring GEN AI which I love. When I’m not
+										coding, you’ll find me traveling, riding my bike, gaming, or capturing moments
+										through photography.
 									</p>
 								</div>
 							</div>
-							
+
 							<div class="col col-d-6 col-t-6 col-m-12 border-line-v">
 								<div class="info-list">
 									<ul>
-										<li><strong>Age . . . . .</strong> 27</li>
+										<li><strong>Age . . . . .</strong> 28</li>
 										<li><strong>Residence . . . . .</strong> India</li>
 										<li><strong>Address . . . . .</strong> Pune, Maharastra</li>
 									</ul>
@@ -237,15 +323,15 @@
 							<div class="col col-d-6 col-t-6 col-m-12 border-line-h">
 								<div class="service-item">
 									<div class="icon">
-										<span class="fa fa-wifi"></span>
+										<span class="fa fa-magic"></span>
 									</div>
 									<div class="name">
 										<span>
-											Network Security </span>
+											Generative AI </span>
 									</div>
 									<div class="desc">
 										<div>
-											<p>Experience in performing vulnerability assesment and penetration testing
+											<p>Building RAG assistants and LLM workflows
 											</p>
 										</div>
 									</div>
@@ -263,7 +349,8 @@
 									</div>
 									<div class="desc">
 										<div>
-											Proficient in implementing DevOps practices to streamline development, automate workflows, and enhance system reliability and scalability.
+											Proficient in implementing DevOps practices to streamline development,
+											automate workflows, and enhance system reliability and scalability.
 										</div>
 									</div>
 								</div>
@@ -301,15 +388,34 @@
 								</div>
 								<div class="resume-items">
 									<div class="resume-item border-line-h active">
-										<div class="date">May 2021 - Present</div>
+										<div class="date">2025 - Present</div>
+										<div class="name">Software Engineer 3</div>
+										<div class="company">TomTom</div>
+										<div class="location">Pune, India</div>
+										<ul style="list-style-type:disc;">
+											<li><strong>WatchDoc</strong> (RAG chatbot): LangChain + OpenAI SDK + Azure
+												over Confluence/spec docs — reduced support load by ~40%.</li>
+											<li><strong>GeoGPT</strong> (MCP Server): Conversational interface to
+												Postgres + REST for geospatial data — ~60% faster internal retrieval.
+											</li>
+											<li><strong>Building Detection Pipeline</strong>: SamGeo2 + Python for
+												satellite imagery segmentation — saved ~8h manual validation per run.
+											</li>
+											<li><strong>AI Tech News Slack Bot</strong>: Aggregates AI/engineering
+												updates to drive awareness and adoption.</li>
+										</ul>
+									</div>
+									<div class="resume-item border-line-h">
+										<div class="date">May 2021 - May 2024</div>
 										<div class="name">Software Engineer 2</div>
 										<div class="company">TomTom</div>
 										<div class="location">Pune, India</div>
 										<ul style="list-style-type:disc;">
-											<li>Automated production pipelines using Python, reducing delivery time by 30%.</li>
-											<li>Deployed ACM architecture on AWS using Docker, Fargate, Kubernetes, and GitHub Actions.</li>
+											<li>Automated production pipelines using Python, reducing delivery time by
+												30%.</li>
+											<li>Deployed ACM architecture on AWS using Docker, Fargate, Kubernetes, and
+												GitHub Actions.</li>
 											<li>Achieved 35% cloud cost reduction through VM and disk optimization.</li>
-											<li>Built AI/ML models to extract building footprints, saving 8–9 hours in cartographer workflows.</li>
 										</ul>
 									</div>
 									<div class="resume-item border-line-h">
@@ -319,13 +425,14 @@
 										<div class="location">Pune, India</div>
 										<ul style="list-style-type:disc;">
 											<li>Built frontend application using Angular, HTML, and CSS.</li>
-											<li>Processed big data using Python and MongoDB, enabling enhanced decision-making.</li>
+											<li>Processed big data using Python and MongoDB, enabling enhanced
+												decision-making.</li>
 											<li>Visualized metrics using Power BI and Grafana for stakeholders.</li>
 											<li>Written multiple spiders for web scraping.</li>
 										</ul>
 									</div>
 								</div>
-								
+
 							</div>
 
 							<!-- education -->
@@ -348,7 +455,8 @@
 										<div class="name">Web Developer</div>
 										<div class="company">Walchand Linux Users Club</div>
 										<p>
-											Responsibilities - Designed and maintained official and event websites for the WLUG community, ensuring seamless user experience and timely updates.
+											Responsibilities - Designed and maintained official and event websites for
+											the WLUG community, ensuring seamless user experience and timely updates.
 										</p>
 									</div>
 									<div class="resume-item">
@@ -356,7 +464,8 @@
 										<div class="name">Web Developer</div>
 										<div class="company">Student Association Of Information Technology</div>
 										<p>
-											Responsibilities - Developed and managed official and event websites for the SAIT community, enhancing digital engagement and event outreach.
+											Responsibilities - Developed and managed official and event websites for the
+											SAIT community, enhancing digital engagement and event outreach.
 										</p>
 									</div>
 									<div class="resume-item">
@@ -364,10 +473,12 @@
 										<div class="name">Lab Admin</div>
 										<div class="company">Information Technology</div>
 										<p>
-											Responsibilities - Ensured optimal functionality and availability of all lab machines, addressing technical issues promptly to support student and faculty needs.
+											Responsibilities - Ensured optimal functionality and availability of all lab
+											machines, addressing technical issues promptly to support student and
+											faculty needs.
 										</p>
 									</div>
-									
+
 								</div>
 							</div>
 
@@ -489,6 +600,52 @@
 									</ul>
 								</div>
 							</div>
+							<div class="col col-d-6 col-t-6 col-m-12 border-line-v">
+								<div class="skills-list">
+									<div class="skill-title border-line-h">
+										<div class="icon"><i class="fa fa-magic"></i></div>
+										<div class="name">Generative AI</div>
+									</div>
+									<ul>
+										<li class="border-line-h">
+											<div class="name">RAG pipelines (chunking, retrieval, re-ranking)</div>
+											<div class="progress">
+												<div class="percentage" style="width:55%;"></div>
+											</div>
+										</li>
+										<li class="border-line-h">
+											<div class="name">LangChain / LangGraph</div>
+											<div class="progress">
+												<div class="percentage" style="width:60%;"></div>
+											</div>
+										</li>
+										<li class="border-line-h">
+											<div class="name">OpenAI SDK / Azure OpenAI</div>
+											<div class="progress">
+												<div class="percentage" style="width:80%;"></div>
+											</div>
+										</li>
+										<li class="border-line-h">
+											<div class="name">Embedding & Indexing (FAISS, Azure AI Search)</div>
+											<div class="progress">
+												<div class="percentage" style="width:70%;"></div>
+											</div>
+										</li>
+										<li class="border-line-h">
+											<div class="name">Prompt Engineering</div>
+											<div class="progress">
+												<div class="percentage" style="width:90%;"></div>
+											</div>
+										</li>
+										<li>
+											<div class="name">MCP Servers (conversational data interfaces)</div>
+											<div class="progress">
+												<div class="percentage" style="width:70%;"></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
 							<!--Tools item-->
 							<div class="col col-d-6 col-t-6 col-m-12 border-line-v">
 								<div class="skills-list">
@@ -579,17 +736,21 @@
 								<div>
 									<div class="text">
 										<ul style="list-style-type: disc; margin-left: 20px;">
-											<li>Led a Shell Scripting workshop as part of the WLUG Metamorphosis event.</li>
-											<li>Conducted a Web Development workshop during the WLUG TechnoTweet event.</li>
-											<li>Delivered a guest lecture on Angular technology at Walchand College of Engineering, Sangli.</li>
-											<li>Presented a session on AWS technology as a guest speaker at Walchand College of Engineering, Sangli.</li>
+											<li>Led a Shell Scripting workshop as part of the WLUG Metamorphosis event.
+											</li>
+											<li>Conducted a Web Development workshop during the WLUG TechnoTweet event.
+											</li>
+											<li>Delivered a guest lecture on Angular technology at Walchand College of
+												Engineering, Sangli.</li>
+											<li>Presented a session on AWS technology as a guest speaker at Walchand
+												College of Engineering, Sangli.</li>
 										</ul>
 									</div>
 								</div>
 							</div>
 							<div class="clear"></div>
 						</div>
-						
+
 
 					</div>
 
@@ -690,30 +851,211 @@
 							</div>
 						</div>
 					</div> -->
+							<!-- WatchDoc (RAG-based Knowledge Assistant) -->
+							<div class="col col-d-6 col-t-6 col-m-12 grid-item design border-line-h">
+								<div class="box-item">
+									<div class="image">
+										<a href="#popup-watchdoc" class="has-popup-media">
+											<img src="images/WatchDoc_RAG.png" alt="" />
+											<span class="info"><span class="ion ion-images"></span></span>
+										</a>
+									</div>
+									<div class="desc">
+										<a href="#popup-watchdoc" class="name has-popup-media">WatchDoc</a>
+										<div class="category">RAG-based internal knowledge assistant</div>
+									</div>
 
-							<!-- watchdoc -->
+									<div id="popup-watchdoc" class="popup-box mfp-fade mfp-hide">
+										<div class="content">
+											<div class="image"><img src="images/WatchDoc_RAG.png" alt=""></div>
+											<div class="desc">
+												<div class="post-box">
+													<h1>WatchDoc</h1>
+													<div class="blog-detail">
+														<h6>Tech stack: LangChain, Azure OpenAI, Python, Flask, Azure AI
+															Search, MongoDB</h6>
+													</div>
+													<div class="blog-content">
+														<p>
+															<strong>WatchDoc</strong> is an enterprise RAG system that
+															lets users query internal specifications and
+															Confluence documentation through natural language. It
+															performs document chunking, embedding,
+															and retrieval using Azure AI Search, with precise citation
+															linking for transparency.
+															The system powers real-time Q&A over thousands of internal
+															pages, reducing search time by 70%.
+														</p>
+														<p>
+															Deployed company-wide, WatchDoc demonstrates scalable LLM
+															integration for enterprise documentation
+															and knowledge discovery.
+														</p>
+													</div>
+													<br>
+													<!-- <a href="https://github.com/akashmore/watchdoc-rag" class="button">
+										<span class="text">View Project</span>
+										<span class="arrow"></span>
+										</a> -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- GeoGPT -->
+							<div class="col col-d-6 col-t-6 col-m-12 grid-item design border-line-h">
+								<div class="box-item">
+									<div class="image">
+										<a href="#popup-geogpt" class="has-popup-media">
+											<img src="images/GeoGPT.png" alt="" />
+											<span class="info"><span class="ion ion-images"></span></span>
+										</a>
+									</div>
+									<div class="desc">
+										<a href="#popup-geogpt" class="name has-popup-media">GeoGPT</a>
+										<div class="category">Conversational geospatial data assistant</div>
+									</div>
+									<div id="popup-geogpt" class="popup-box mfp-fade mfp-hide">
+										<div class="content">
+											<div class="image"><img src="images/GeoGPT.png" alt=""></div>
+											<div class="desc">
+												<div class="post-box">
+													<h1>GeoGPT</h1>
+													<div class="blog-detail">
+														<h6>Tech stack: LangChain, Postgres, Python, Azure OpenAI</h6>
+													</div>
+													<div class="blog-content">
+														<p>
+															A conversational MCP server that lets teams query geospatial
+															and relational data in natural language.
+															It connects LangChain pipelines with Postgres and REST
+															endpoints for real-time data retrieval and summarization,
+															reducing internal data lookup time by over 60%.
+														</p>
+													</div>
+													<br>
+													<!-- <a href="https://github.com/akashmore/geogpt" class="button">
+										<span class="text">View Project</span>
+										<span class="arrow"></span>
+										</a> -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- AI Tech-News Bot -->
+							<div class="col col-d-6 col-t-6 col-m-12 grid-item design border-line-h">
+								<div class="box-item">
+									<div class="image">
+										<a href="#popup-newsbot" class="has-popup-media">
+											<img src="images/NewsBot.png" alt="" />
+											<span class="info"><span class="ion ion-images"></span></span>
+										</a>
+									</div>
+									<div class="desc">
+										<a href="#popup-newsbot" class="name has-popup-media">AI Tech-News Bot</a>
+										<div class="category">Slack automation for curated AI/tech updates</div>
+									</div>
+									<div id="popup-newsbot" class="popup-box mfp-fade mfp-hide">
+										<div class="content">
+											<div class="image"><img src="images/NewsBot.png" alt=""></div>
+											<div class="desc">
+												<div class="post-box">
+													<h1>AI Tech-News Bot</h1>
+													<div class="blog-detail">
+														<h6>Tech stack: Python, Slack SDK, RSS feeds, OpenAI</h6>
+													</div>
+													<div class="blog-content">
+														<p>
+															An internal Slack bot that aggregates AI, GenAI, and
+															engineering updates from curated RSS feeds such as
+															The Verge, TechCrunch, and VentureBeat, and posts concise
+															digests to Slack channels daily.
+															Helps teams stay current on AI innovations.
+														</p>
+													</div>
+													<br>
+													<!-- <a href="https://github.com/akashmore/ai-tech-news-bot" class="button">
+										<span class="text">View Project</span>
+										<span class="arrow"></span>
+										</a> -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Building Detection Pipeline -->
+							<div class="col col-d-6 col-t-6 col-m-12 grid-item design border-line-h">
+								<div class="box-item">
+									<div class="image">
+										<a href="#popup-builddet" class="has-popup-media">
+											<img src="images/BuildingDetection.png" alt="" />
+											<span class="info"><span class="ion ion-images"></span></span>
+										</a>
+									</div>
+									<div class="desc">
+										<a href="#popup-builddet" class="name has-popup-media">Building Detection
+											Pipeline</a>
+										<div class="category">Automated extraction from satellite imagery</div>
+									</div>
+									<div id="popup-builddet" class="popup-box mfp-fade mfp-hide">
+										<div class="content">
+											<div class="image"><img src="images/BuildingDetection.png" alt=""></div>
+											<div class="desc">
+												<div class="post-box">
+													<h1>Building Detection Pipeline</h1>
+													<div class="blog-detail">
+														<h6>Tech stack: Python, SamGeo2, OpenCV, Rasterio</h6>
+													</div>
+													<div class="blog-content">
+														<p>
+															A geospatial AI pipeline that detects and validates building
+															footprints from satellite imagery using SamGeo2.
+															It automates manual validation by aligning detected polygons
+															with existing lead coordinates, saving 8–9 hours per
+															dataset.
+														</p>
+													</div>
+													<br>
+													<!-- <a href="https://github.com/akashmore/building-detection-pipeline" class="button">
+										<span class="text">View Project</span>
+										<span class="arrow"></span>
+										</a> -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- docclassifier -->
 							<div class="col col-d-6 col-t-6 col-m-12 grid-item design border-line-h">
 								<div class="box-item">
 									<div class="image">
 										<a href="#popup-1" class="has-popup-media">
-											<img src="images/WatchDoc.jpg" alt="" width="600px" height="500px" />
+											<img src="images/DocClassifier.png" alt="" />
 											<span class="info">
 												<span class="ion ion-images"></span>
 											</span>
 										</a>
 									</div>
 									<div class="desc">
-										<a href="#popup-1" class="name has-popup-media">WatchDoc</a>
+										<a href="#popup-1" class="name has-popup-media">DocClassifier</a>
 										<div class="category">A document classifier</div>
 									</div>
 									<div id="popup-1" class="popup-box mfp-fade mfp-hide">
 										<div class="content">
 											<div class="image">
-												<img src="images/WatchDoc.jpg" width="600px" height="500px" alt="">
+												<img src="images/DocClassifier.png" alt="">
 											</div>
 											<div class="desc">
 												<div class="post-box">
-													<h1>WatchDoc</h1>
+													<h1>DocClassifier</h1>
 													<div class="blog-detail">
 														<h6>Tech stack: Flask, MongoDB, Python</h6>
 													</div>
@@ -745,7 +1087,7 @@
 								<div class="box-item">
 									<div class="image">
 										<a href="#popup-2" class="has-popup-media">
-											<img src="images/SDP.jpg" width="600px" height="500px" alt="" />
+											<img src="images/SDP.jpg" alt="" />
 											<span class="info">
 												<span class="ion ion-images"></span>
 											</span>
@@ -758,7 +1100,7 @@
 									<div id="popup-2" class="popup-box mfp-fade mfp-hide">
 										<div class="content">
 											<div class="image">
-												<img src="images/SDP.jpg" width="600px" height="500px" alt="">
+												<img src="images/SDP.jpg" alt="">
 											</div>
 											<div class="desc">
 												<div class="post-box">
@@ -781,8 +1123,8 @@
 
 													</div>
 													<br>
-			
-												</a> 
+
+													</a>
 												</div>
 											</div>
 										</div>
@@ -961,9 +1303,12 @@
 													</div>
 													<div class="blog-content">
 														<p>
-															Managed the Advanced City Model for TomTom, taking ownership of building and deploying
-															REST modules in Spring Boot for pipeline. Oversaw data creation, updates, and deletion to
-															ensure accurate 3D building visuals. Enhanced map quality and user experience through
+															Managed the Advanced City Model for TomTom, taking ownership
+															of building and deploying
+															REST modules in Spring Boot for pipeline. Oversaw data
+															creation, updates, and deletion to
+															ensure accurate 3D building visuals. Enhanced map quality
+															and user experience through
 															seamless integration of building data.
 														</p>
 													</div>
@@ -1007,9 +1352,12 @@
 													</div>
 													<div class="blog-content">
 														<p>
-															Developed and implemented a Python Scrapy framework to acquire new leads from publicly
-															available internet data, reducing dependency on external vendors and cutting costs.
-															Validated and streamlined data ingestion into the TomTom database to ensure accuracy and
+															Developed and implemented a Python Scrapy framework to
+															acquire new leads from publicly
+															available internet data, reducing dependency on external
+															vendors and cutting costs.
+															Validated and streamlined data ingestion into the TomTom
+															database to ensure accuracy and
 															accessibility.
 														</p>
 													</div>
@@ -1024,7 +1372,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<!-- CampusPoint -->
 							<div class="col col-d-6 col-t-6 col-m-12 grid-item design border-line-h">
 								<div class="box-item">
@@ -1188,25 +1536,22 @@
 						Conacts Info
 					-->
 					<div class="content contacts">
-
-						<!-- title -->
 						<div class="title">Get in Touch</div>
-
-						<!-- content -->
 						<div class="row">
 							<div class="col col-d-12 col-t-12 col-m-12 border-line-v">
 								<div class="info-list">
 									<ul>
-										<li><strong>Address . . . . .</strong> Pune, India</li>
-										<li><strong>Phone . . . . .</strong> +91 7387971032</li>
-										<li><strong>Freelance . . . . .</strong> Available</li>
-										<li><strong>Email . . </strong> akashmore1997.am85@gmail.com</li>
+										<li><strong>Address :</strong> Pune, India</li>
+										<li><strong>Phone :</strong> +91 7387971032</li>
+										<li><strong>Freelance :</strong> Available</li>
+										<li><strong>Email :</strong> <a
+												href="mailto:akashmore1997.am85@gmail.com">akashmore1997.am85@gmail.com</a>
+										</li>
 									</ul>
 								</div>
 							</div>
 							<div class="clear"></div>
 						</div>
-
 					</div>
 
 					<!--
@@ -1215,7 +1560,7 @@
 					<div class="content contacts">
 						<!-- title -->
 						<div class="title">Contact Form</div>
-					
+
 						<!-- content -->
 						<div class="row">
 							<div class="col col-d-12 col-t-12 col-m-12 border-line-v">
@@ -1224,17 +1569,20 @@
 										<div class="row">
 											<div class="col col-d-6 col-t-6 col-m-12">
 												<div class="group-val">
-													<input type="text" id="name" name="name" placeholder="Full Name" required />
+													<input type="text" id="name" name="name" placeholder="Full Name"
+														required />
 												</div>
 											</div>
 											<div class="col col-d-6 col-t-6 col-m-12">
 												<div class="group-val">
-													<input type="email" id="email" name="email" placeholder="Email Address" required />
+													<input type="email" id="email" name="email"
+														placeholder="Email Address" required />
 												</div>
 											</div>
 											<div class="col col-d-12 col-t-12 col-m-12">
 												<div class="group-val">
-													<textarea id="message" name="message" placeholder="Your Message" required></textarea>
+													<textarea id="message" name="message" placeholder="Your Message"
+														required></textarea>
 												</div>
 											</div>
 										</div>
@@ -1245,7 +1593,8 @@
 											</button>
 										</div>
 									</form>
-									<div id="successMessage" class="alert-success" style="display: none; margin-top: 15px;">
+									<div id="successMessage" class="alert-success"
+										style="display: none; margin-top: 15px;">
 										<p>Thanks, your message is sent successfully!</p>
 									</div>
 								</div>
@@ -1253,25 +1602,43 @@
 							<div class="clear"></div>
 						</div>
 					</div>
-					
+
 					<script>
-						function handleFormSubmission(event) {
-							event.preventDefault(); // Prevent default form submission behavior
-					
-							// Reset the form
-							document.getElementById("cform").reset();
-					
-							// Show the success message
-							const successMessage = document.getElementById("successMessage");
-							successMessage.style.display = "block";
-					
-							// Hide the success message after 5 seconds (optional)
-							setTimeout(() => {
-								successMessage.style.display = "none";
-							}, 5000);
+						const form = document.getElementById('cform');
+						const nameEl = document.getElementById('name');
+						const emailEl = document.getElementById('email');
+						const msgEl = document.getElementById('message');
+						const success = document.getElementById('successMessage');
+
+						function handleFormSubmission(e) {
+							e.preventDefault();
+
+							// If any field invalid → show red and abort
+							if (!form.checkValidity()) {
+								form.classList.add('show-invalid'); // triggers red borders
+								success.style.display = 'none';
+								// also show native messages
+								form.reportValidity();
+								return;
+							}
+
+							// Success
+							success.style.display = 'block';
+
+							// Reset form & remove red styling
+							form.reset();
+							form.classList.remove('show-invalid'); // back to neutral borders
 						}
+
+						// Hide success when user starts typing again
+						[nameEl, emailEl, msgEl].forEach(el =>
+							el.addEventListener('input', () => { success.style.display = 'none'; })
+						);
 					</script>
-					
+
+
+
+
 				</div>
 			</div>
 

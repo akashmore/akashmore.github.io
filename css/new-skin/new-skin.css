@@ -2674,3 +2674,25 @@ a.next.page-numbers:hover {
 	    padding-top: 118px;
 	}
 }
+/* === Uniform project thumbnails === */
+.works .box-item .image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;          /* keep your current rounding */
+  background: #eee;             /* placeholder while loading */
+  aspect-ratio: 3 / 2;          /* consistent 3:2 crop */
+}
+
+/* Make images fill the frame without distortion */
+.works .box-item .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* crop edges to fit the frame */
+  display: block;
+}
+@media (min-width: 1024px) { .works .box-item .image { height: 220px; } }
+@media (max-width: 1023px) { .works .box-item .image { height: 200px; } }
+@media (max-width: 767px)  { .works .box-item .image { height: 180px; } }
+
+
+
